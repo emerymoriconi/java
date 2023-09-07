@@ -2,6 +2,8 @@ package application;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
@@ -17,6 +19,7 @@ public class Program {
 	public static void main(String[] args) throws ParseException {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date moment = new Date();
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
@@ -58,11 +61,14 @@ public class Program {
 			order.addItem(orderItem);
 		}
 		
+		String bd = sdf.format(order.getClient().getBirthDate());
+		String mom = sdf2.format(order.getMoment());
+		
 		System.out.println();
 		System.out.println("ORDER SUMMARY: ");
-		System.out.println("Order moment: " + order.getMoment());
+		System.out.println("Order moment: " + mom);
 		System.out.println("Order status: " + order.getStatus());
-		System.out.println("Client: " + order.getClient().getName() + " (" + order.getClient().getBirthDate() + ") - " + order.getClient().getEmail());
+		System.out.println("Client: " + order.getClient().getName() + " (" + bd + ") - " + order.getClient().getEmail());
 		System.out.println("Order items: ");
 		
 		for (OrderItem i : order.getItems()) {
