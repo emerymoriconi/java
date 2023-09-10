@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
-
 import entities.Department;
 import entities.HourContract;
 import entities.Worker;
@@ -36,8 +35,8 @@ public class Program {
 		System.out.print("How many contracts to this worker? ");
 		int n = sc.nextInt();
 		
-		for (int i = 0; i < n; i++) {
-			System.out.print("Enter contract #" + i + " data: ");
+		for (int i = 1; i <= n; i++) {
+			System.out.println("Enter contract #" + i + " data: ");
 			System.out.print("Date (DD/MM/YYYY): ");
 			Date contractDate = sfd.parse(sc.next());
 			System.out.print("Value per hour: ");
